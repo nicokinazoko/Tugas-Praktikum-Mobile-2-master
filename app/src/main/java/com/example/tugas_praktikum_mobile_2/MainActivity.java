@@ -26,8 +26,9 @@ public class MainActivity extends AppCompatActivity {
         rvPahlawan              =   findViewById(R.id.rv_heroes);
         rvPahlawan.setHasFixedSize(true);
         listPahlawan.addAll(PahlawanData.getListData());
-
         showRecyclerList();
+
+
 
 //        share                   =   findViewById(R.id.btn_share);
 //        share.setOnClickListener(new View.OnClickListener() {

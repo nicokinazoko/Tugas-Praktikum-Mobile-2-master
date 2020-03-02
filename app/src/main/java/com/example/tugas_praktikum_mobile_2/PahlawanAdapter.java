@@ -23,6 +23,7 @@ public class PahlawanAdapter extends RecyclerView.Adapter<PahlawanAdapter.ViewHo
 
     private Context context;
     private ArrayList<PahlawanModel> pahlawanModels;
+    private PahlawanModel pahlawanModel;
 
     public PahlawanAdapter(@NonNull Context context) {
         this.context = context;
@@ -52,7 +53,7 @@ public class PahlawanAdapter extends RecyclerView.Adapter<PahlawanAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         Glide.with(context).load(getPahlawanModels().get(position).getFotoPahlawan()).into(holder.ivFotoPahlawan);
 
         holder.tvNamaPahlawan.setText(getPahlawanModels().get(position).getNamaPahlawan());
@@ -63,8 +64,11 @@ public class PahlawanAdapter extends RecyclerView.Adapter<PahlawanAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 Intent shareIntent      =   new Intent();
-                shareIntent.setAction(Intent.ACTION_DIAL);
-                startActivity(shareIntent);
+                shareIntent.setAction(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT,getPahlawanModels().get(position).getNamaPahlawan());
+                shareIntent.putExtra(Intent.EXTRA_TEXT, getPahlawanModels().get(position).getBiografiPahlawan());
+                shareIntent.setType("text/plain");
+                context.startActivity(shareIntent);
             }
         });
     }
