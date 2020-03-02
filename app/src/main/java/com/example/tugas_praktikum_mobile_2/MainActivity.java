@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
 
         showRecyclerList();
 
-        share                   =   findViewById(R.id.btn_share);
-        share.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent shareIntent      =   new Intent();
-                shareIntent.setAction(Intent.ACTION_DIAL);
-                startActivity(shareIntent);
-            }
-        });
+//        share                   =   findViewById(R.id.btn_share);
+//        share.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent shareIntent      =   new Intent();
+//                shareIntent.setAction(Intent.ACTION_DIAL);
+//                startActivity(shareIntent);
+//            }
+//        });
 
     }
 

@@ -1,9 +1,11 @@
 package com.example.tugas_praktikum_mobile_2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,6 +58,15 @@ public class PahlawanAdapter extends RecyclerView.Adapter<PahlawanAdapter.ViewHo
         holder.tvNamaPahlawan.setText(getPahlawanModels().get(position).getNamaPahlawan());
 
         holder.tvDetailPahlawan.setText(getPahlawanModels().get(position).getBiografiPahlawan());
+
+        holder.btn_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent shareIntent      =   new Intent();
+                shareIntent.setAction(Intent.ACTION_DIAL);
+                startActivity(shareIntent);
+            }
+        });
     }
 
     //    @Override
@@ -75,13 +86,18 @@ public class PahlawanAdapter extends RecyclerView.Adapter<PahlawanAdapter.ViewHo
         private ImageView ivFotoPahlawan;
         private TextView tvNamaPahlawan;
         private TextView tvDetailPahlawan;
+        private Button btn_share;
+
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivFotoPahlawan          =   itemView.findViewById(R.id.iv_FotoPahlawan);
             tvNamaPahlawan          =   itemView.findViewById(R.id.tv_NamaPahlawan);
             tvDetailPahlawan        =   itemView.findViewById(R.id.tv_DetailPahlawan);
+            btn_share               =   itemView.findViewById(R.id.btn_share);
+
         }
+
     }
 
     public class Adapter<T> {
